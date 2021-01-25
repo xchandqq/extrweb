@@ -15,9 +15,9 @@ import java.util.UUID;
  */
 public class User {
 
-    UUID id;
-    String name;
-    String username;
+    private UUID id;
+    private String name;
+    private String username;
 
     public User(
             @JsonProperty("uuid") UUID id,
@@ -36,7 +36,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, username);
+        return Objects.hash(getId(), getName(), getUsername());
     }
 
     @Override
@@ -47,10 +47,34 @@ public class User {
             return false;
         } else {
             User user = (User) obj;
-            return user.id.equals(id)
-                    && user.name.equals(name)
-                    && user.username.equals(username);
+            return user.getId().equals(getId())
+                    && user.getName().equals(getName())
+                    && user.getUsername().equals(getUsername());
         }
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
 }
